@@ -14,16 +14,16 @@
     font-family:'Segoe UI', sans-serif;
 }
 
-html{
+html, body{
+    width:100%;
+    overflow-x:hidden;
     overflow-y:auto;
 }
 
 body{
-    min-height:100vh;
     background:linear-gradient(180deg,#050816,#12082a,#1f1147);
+    padding:80px 15px 40px;
     position:relative;
-    padding:25px 15px;
-    overflow-y:auto;
 }
 
 /* FONDO */
@@ -34,7 +34,7 @@ body{
     left:0;
     width:100%;
     height:100%;
-    z-index:0;
+    z-index:-1;
     overflow:hidden;
 }
 
@@ -51,7 +51,7 @@ body{
 
 @keyframes shine{
     from{
-        opacity:0.2;
+        opacity:0.3;
         transform:scale(1);
     }
     to{
@@ -69,30 +69,21 @@ body{
 }
 
 .p1{
-    width:140px;
-    height:140px;
+    width:160px;
+    height:160px;
     background:#7b2cbf;
-    top:80px;
-    left:20px;
-    opacity:0.45;
+    top:120px;
+    left:-40px;
+    opacity:0.4;
 }
 
 .p2{
-    width:220px;
-    height:220px;
+    width:250px;
+    height:250px;
     background:#4361ee;
-    bottom:0;
-    right:-60px;
+    bottom:-60px;
+    right:-80px;
     opacity:0.35;
-}
-
-/* CONTENEDOR */
-
-.container{
-    position:relative;
-    z-index:2;
-    display:flex;
-    justify-content:center;
 }
 
 /* TARJETA */
@@ -100,20 +91,20 @@ body{
 .card{
     width:100%;
     max-width:700px;
+    margin:auto;
     padding:40px 25px;
-    border-radius:35px;
+    border-radius:30px;
     background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
     border:1px solid rgba(255,255,255,0.15);
     text-align:center;
     color:white;
     box-shadow:0 0 35px rgba(138,43,226,0.3);
-    margin:30px 0;
 }
 
 h1{
-    font-size:2.8rem;
-    margin-bottom:20px;
+    font-size:2.7rem;
+    margin-bottom:25px;
     color:#ffd6ff;
     text-shadow:0 0 15px #c77dff;
 }
@@ -121,7 +112,7 @@ h1{
 p{
     font-size:1.2rem;
     line-height:1.9;
-    margin-bottom:20px;
+    margin-bottom:22px;
     color:#f5f5f5;
 }
 
@@ -144,14 +135,14 @@ button{
 }
 
 button:hover{
-    transform:scale(1.08);
+    transform:scale(1.05);
 }
 
 /* MENSAJE */
 
 .mensaje{
-    margin-top:25px;
     display:none;
+    margin-top:25px;
 }
 
 .mensaje p{
@@ -167,12 +158,16 @@ footer{
     font-weight:bold;
 }
 
-/* CELULAR */
+/* RESPONSIVE */
 
 @media(max-width:600px){
 
+    body{
+        padding-top:100px;
+    }
+
     h1{
-        font-size:2.1rem;
+        font-size:2.2rem;
     }
 
     p{
@@ -191,53 +186,47 @@ footer{
 <body>
 
 <div class="fondo" id="fondo">
-
     <div class="planet p1"></div>
     <div class="planet p2"></div>
-
 </div>
 
-<div class="container">
+<div class="card">
 
-    <div class="card">
+    <div class="emoji">🌌💜</div>
 
-        <div class="emoji">🌌💜</div>
+    <h1>Feliz Día de las Madres</h1>
 
-        <h1>Feliz Día de las Madres</h1>
+    <p>
+        Mamá, gracias por estar conmigo en cada momento,
+        por cuidarme, apoyarme y nunca dejarme solo.
+    </p>
 
+    <p>
+        Eres una de las personas más importantes en mi vida
+        y siempre voy a agradecer todo lo que haces por mí. ✨
+    </p>
+
+    <p>
+        Espero que hoy tengas un día lleno de amor,
+        felicidad y muchos momentos hermosos,
+        porque mereces todo lo bonito de este universo. 🌙
+    </p>
+
+    <button onclick="mostrarMensaje()">
+        Ver mensaje 💫
+    </button>
+
+    <div class="mensaje" id="mensaje">
         <p>
-            Mamá, gracias por estar conmigo en cada momento,
-            por cuidarme, apoyarme y nunca dejarme solo.
+            Gracias por cada consejo, cada abrazo y cada momento.
+            Aunque a veces no lo diga mucho,
+            te quiero muchísimo y siempre voy a agradecer tenerte conmigo. 💜✨
         </p>
-
-        <p>
-            Eres una de las personas más importantes en mi vida
-            y siempre voy a agradecer todo lo que haces por mí. ✨
-        </p>
-
-        <p>
-            Espero que hoy tengas un día lleno de amor,
-            felicidad y muchos momentos hermosos,
-            porque mereces todo lo bonito de este universo. 🌙
-        </p>
-
-        <button onclick="mostrarMensaje()">
-            Ver mensaje 💫
-        </button>
-
-        <div class="mensaje" id="mensaje">
-            <p>
-                Gracias por cada consejo, cada abrazo y cada momento.
-                Aunque a veces no lo diga mucho,
-                te quiero muchísimo y siempre voy a agradecer tenerte conmigo. 💜✨
-            </p>
-        </div>
-
-        <footer>
-            Con mucho amor, tu hijo ❤️
-        </footer>
-
     </div>
+
+    <footer>
+        Con mucho amor, tu hijo ❤️
+    </footer>
 
 </div>
 
@@ -247,7 +236,7 @@ footer{
 
 const fondo = document.getElementById("fondo");
 
-for(let i = 0; i < 140; i++){
+for(let i = 0; i < 150; i++){
 
     let star = document.createElement("div");
 
