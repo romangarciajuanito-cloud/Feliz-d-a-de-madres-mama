@@ -14,27 +14,31 @@
     font-family:'Segoe UI', sans-serif;
 }
 
+html{
+    overflow-y:auto;
+}
+
 body{
     min-height:100vh;
-    overflow-y:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     background:linear-gradient(180deg,#050816,#12082a,#1f1147);
     position:relative;
-    padding:20px;
+    padding:25px 15px;
+    overflow-y:auto;
+}
+
+/* FONDO */
+
+.fondo{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    overflow:hidden;
 }
 
 /* ESTRELLAS */
-
-.stars{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    z-index:0;
-}
 
 .star{
     position:absolute;
@@ -59,18 +63,17 @@ body{
 /* PLANETAS */
 
 .planet{
-    position:fixed;
+    position:absolute;
     border-radius:50%;
     filter:blur(2px);
-    z-index:0;
 }
 
 .p1{
     width:140px;
     height:140px;
     background:#7b2cbf;
-    top:60px;
-    left:40px;
+    top:80px;
+    left:20px;
     opacity:0.45;
 }
 
@@ -78,56 +81,52 @@ body{
     width:220px;
     height:220px;
     background:#4361ee;
-    bottom:-60px;
-    right:-50px;
+    bottom:0;
+    right:-60px;
     opacity:0.35;
+}
+
+/* CONTENEDOR */
+
+.container{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:center;
 }
 
 /* TARJETA */
 
 .card{
-    width:90%;
-    max-width:720px;
-    margin:40px 0;
-    padding:45px 30px;
+    width:100%;
+    max-width:700px;
+    padding:40px 25px;
     border-radius:35px;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(12px);
     border:1px solid rgba(255,255,255,0.15);
     text-align:center;
     color:white;
-    z-index:2;
     box-shadow:0 0 35px rgba(138,43,226,0.3);
-    animation:appear 1.5s ease;
-}
-
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    margin:30px 0;
 }
 
 h1{
-    font-size:3rem;
+    font-size:2.8rem;
     margin-bottom:20px;
     color:#ffd6ff;
     text-shadow:0 0 15px #c77dff;
 }
 
 p{
-    font-size:1.25rem;
+    font-size:1.2rem;
     line-height:1.9;
     margin-bottom:20px;
     color:#f5f5f5;
 }
 
 .emoji{
-    font-size:65px;
+    font-size:60px;
     margin-bottom:15px;
 }
 
@@ -152,21 +151,13 @@ button:hover{
 
 .mensaje{
     margin-top:25px;
-    max-height:0;
-    overflow:hidden;
-    transition:0.8s;
-    opacity:0;
-}
-
-.mensaje.activo{
-    max-height:500px;
-    opacity:1;
+    display:none;
 }
 
 .mensaje p{
     color:#ffd6ff;
     font-weight:bold;
-    font-size:1.15rem;
+    font-size:1.1rem;
 }
 
 footer{
@@ -176,24 +167,20 @@ footer{
     font-weight:bold;
 }
 
-/* RESPONSIVE */
+/* CELULAR */
 
 @media(max-width:600px){
 
     h1{
-        font-size:2.3rem;
+        font-size:2.1rem;
     }
 
     p{
-        font-size:1.05rem;
+        font-size:1rem;
     }
 
     .card{
-        padding:35px 22px;
-    }
-
-    .emoji{
-        font-size:55px;
+        padding:35px 20px;
     }
 
 }
@@ -203,60 +190,67 @@ footer{
 
 <body>
 
-<div class="stars" id="stars"></div>
+<div class="fondo" id="fondo">
 
-<div class="planet p1"></div>
-<div class="planet p2"></div>
+    <div class="planet p1"></div>
+    <div class="planet p2"></div>
 
-<div class="card">
+</div>
 
-    <div class="emoji">🌌💜</div>
+<div class="container">
 
-    <h1>Feliz Día de las Madres</h1>
+    <div class="card">
 
-    <p>
-        Mamá, gracias por estar conmigo en cada momento,
-        por cuidarme, apoyarme y nunca dejarme solo.
-    </p>
+        <div class="emoji">🌌💜</div>
 
-    <p>
-        Eres una de las personas más importantes en mi vida
-        y siempre voy a agradecer todo lo que haces por mí. ✨
-    </p>
+        <h1>Feliz Día de las Madres</h1>
 
-    <p>
-        Espero que hoy tengas un día lleno de amor,
-        felicidad y muchos momentos hermosos,
-        porque mereces todo lo bonito de este universo. 🌙
-    </p>
-
-    <button onclick="mostrarMensaje()">
-        Ver mensaje 💫
-    </button>
-
-    <div class="mensaje" id="mensaje">
         <p>
-            Gracias por cada consejo, cada abrazo y cada momento.
-            Aunque a veces no lo diga mucho,
-            te quiero muchísimo y siempre voy a agradecer tenerte conmigo. 💜✨
+            Mamá, gracias por estar conmigo en cada momento,
+            por cuidarme, apoyarme y nunca dejarme solo.
         </p>
-    </div>
 
-    <footer>
-        Con mucho amor, tu hijo ❤️
-    </footer>
+        <p>
+            Eres una de las personas más importantes en mi vida
+            y siempre voy a agradecer todo lo que haces por mí. ✨
+        </p>
+
+        <p>
+            Espero que hoy tengas un día lleno de amor,
+            felicidad y muchos momentos hermosos,
+            porque mereces todo lo bonito de este universo. 🌙
+        </p>
+
+        <button onclick="mostrarMensaje()">
+            Ver mensaje 💫
+        </button>
+
+        <div class="mensaje" id="mensaje">
+            <p>
+                Gracias por cada consejo, cada abrazo y cada momento.
+                Aunque a veces no lo diga mucho,
+                te quiero muchísimo y siempre voy a agradecer tenerte conmigo. 💜✨
+            </p>
+        </div>
+
+        <footer>
+            Con mucho amor, tu hijo ❤️
+        </footer>
+
+    </div>
 
 </div>
 
 <script>
 
-/* CREAR ESTRELLAS */
+/* ESTRELLAS */
 
-const stars = document.getElementById("stars");
+const fondo = document.getElementById("fondo");
 
 for(let i = 0; i < 140; i++){
 
     let star = document.createElement("div");
+
     star.classList.add("star");
 
     star.style.top = Math.random() * 100 + "%";
@@ -264,13 +258,20 @@ for(let i = 0; i < 140; i++){
 
     star.style.animationDuration = (Math.random() * 3 + 2) + "s";
 
-    stars.appendChild(star);
+    fondo.appendChild(star);
 }
 
-/* MOSTRAR MENSAJE */
+/* MENSAJE */
 
 function mostrarMensaje(){
-    document.getElementById("mensaje").classList.toggle("activo");
+
+    const mensaje = document.getElementById("mensaje");
+
+    if(mensaje.style.display === "block"){
+        mensaje.style.display = "none";
+    }else{
+        mensaje.style.display = "block";
+    }
 }
 
 </script>
